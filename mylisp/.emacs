@@ -218,6 +218,8 @@
 ;;hotkey for system functions
 (global-set-key (kbd "C-z") 'set-mark-command)
 (global-set-key (kbd "C-x C-z") 'pop-global-mark)
+(global-set-key (kbd "C-x r C-z") 'point-to-register)
+(global-set-key (kbd "C-x r z") 'point-to-register)
 (global-set-key (kbd "C-S-p") 'match-paren)
 
 ;;hotkey for custom functions
