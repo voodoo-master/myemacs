@@ -213,6 +213,56 @@
 ;;(enable-visual-studio-bookmarks)
 
 ;;========================================
+;;hotkey define
+;;========================================
+;;hotkey for system functions
+(global-set-key (kbd "C-z") 'set-mark-command)
+(global-set-key (kbd "C-x C-z") 'pop-global-mark)
+(global-set-key (kbd "C-S-p") 'match-paren)
+
+;;hotkey for custom functions
+(global-set-key [(f5)] 'refresh-file)
+(global-set-key (kbd "M-;") 'smart-comment-dwim-line)
+;;(define-key global-map (kbd "M-g t") 'go-to-char)
+;;(global-set-key (kbd "C-c y a") 'copy-to-beginning-of-line)
+;;(global-set-key (kbd "C-c y e") 'copy-to-end-of-line)
+;;(global-set-key (kbd "C-c y w") 'lh-copy-word)
+;;(global-set-key (kbd "C-c y s") 'lh-copy-string)
+;;(global-set-key (kbd "C-c y p") 'lh-copy-parenthesis)
+;;(global-set-key (kbd "C-c p") 'yank-after-line)
+;;(global-set-key (kbd "C-c P") 'yank-before-line)
+;;(global-set-key (kbd "C-c d w") 'lh-kill-word)
+;;(global-set-key (kbd "C-c d s") 'lh-kill-string)
+;;(global-set-key (kbd "C-c d p") 'lh-kill-parenthesis)
+(global-set-key (kbd "<C-return>") 'insert-line-after)
+(global-set-key (kbd "<M-return>") 'insert-line-before)
+(global-set-key (kbd "<M-S-up>") 'move-line-up)
+(global-set-key (kbd "<M-S-down>") 'move-line-down)
+
+;;(global-set-key (kbd "C-x <up>") 'windmove-up)
+;;(global-set-key (kbd "C-x <down>") 'windmove-down)
+;;(global-set-key (kbd "C-x <left>") 'windmove-left)
+;;(global-set-key (kbd "C-x <right>") 'windmove-right)
+
+;;(global-set-key (kbd "<f7>") 'ska-jump-to-register)
+;;(global-set-key (kbd "<f8>") 'ska-point-to-register)
+
+(global-set-key (kbd "C-c j") 'avy-goto-word-or-subword-1)
+(global-set-key (kbd "C-c k") 'avy-goto-char)
+(global-set-key (kbd "C-c l") 'avy-goto-line)
+
+(global-set-key (kbd "<S-up>") 'tabbar-backward-group)
+(global-set-key (kbd "<S-down>") 'tabbar-forward-group)
+(global-set-key (kbd "<S-left>") 'tabbar-backward-tab)
+(global-set-key (kbd "<S-right>") 'tabbar-forward-tab)
+(global-set-key (kbd "<C-tab>") 'tabbar-forward-tab)
+(global-set-key (kbd "<S-iso-lefttab>") 'tabbar-forward-group)
+
+;;(global-set-key (kbd "s-o") 'other-window)
+;;(global-set-key (kbd "s-;") 'delete-other-windows)
+;;(global-set-key (kbd "s-'") 'delete-window)
+
+;;========================================
 ;;config other plugin
 ;;========================================
 ;;config rainbow-delimiters
@@ -257,11 +307,6 @@
                            ("http" . "10.204.220.5:80")
                            ("https" . "10.204.220.5:80")))
 
-;;config avy
-(global-set-key (kbd "C-c j") 'avy-goto-word-or-subword-1)
-(global-set-key (kbd "C-c k") 'avy-goto-char)
-(global-set-key (kbd "C-c l") 'avy-goto-line)
-
 ;;config ggtags
 (require 'ggtags)
 (add-hook 'c-mode-common-hook
@@ -296,19 +341,6 @@
                "User Buffer")
               )))
 (setq tabbar-buffer-groups-function 'tabbar-buffer-groups)
-
-;;config tabbar key
-(global-set-key (kbd "<S-up>") 'tabbar-backward-group)
-(global-set-key (kbd "<S-down>") 'tabbar-forward-group)
-(global-set-key (kbd "<S-left>") 'tabbar-backward-tab)
-(global-set-key (kbd "<S-right>") 'tabbar-forward-tab)
-(global-set-key (kbd "<C-tab>") 'tabbar-forward-tab)
-(global-set-key (kbd "<S-iso-lefttab>") 'tabbar-forward-group)
-
-;;config window key
-;;(global-set-key (kbd "s-o") 'other-window)
-;;(global-set-key (kbd "s-;") 'delete-other-windows)
-;;(global-set-key (kbd "s-'") 'delete-window)
 
 ;;config session
 (require 'session)
@@ -692,40 +724,6 @@ when used in shell-mode, it will paste parenthesis on shell prompt by default"
 (defun refresh-file ()
   (interactive)
   (revert-buffer t (not (buffer-modified-p)) t))
-
-;;========================================
-;;hotkey define
-;;========================================
-;;config custom function key
-(global-set-key (kbd "C-z") 'set-mark-command)
-(global-set-key (kbd "C-x C-z") 'pop-global-mark)
-(global-set-key (kbd "C-S-p") 'match-paren)
-
-(global-set-key [(f5)] 'refresh-file)
-(global-set-key (kbd "M-;") 'smart-comment-dwim-line)
-;;(define-key global-map (kbd "M-g t") 'go-to-char)
-;;(global-set-key (kbd "C-c y a") 'copy-to-beginning-of-line)
-;;(global-set-key (kbd "C-c y e") 'copy-to-end-of-line)
-;;(global-set-key (kbd "C-c y w") 'lh-copy-word)
-;;(global-set-key (kbd "C-c y s") 'lh-copy-string)
-;;(global-set-key (kbd "C-c y p") 'lh-copy-parenthesis)
-;;(global-set-key (kbd "C-c p") 'yank-after-line)
-;;(global-set-key (kbd "C-c P") 'yank-before-line)
-;;(global-set-key (kbd "C-c d w") 'lh-kill-word)
-;;(global-set-key (kbd "C-c d s") 'lh-kill-string)
-;;(global-set-key (kbd "C-c d p") 'lh-kill-parenthesis)
-(global-set-key (kbd "<C-return>") 'insert-line-after)
-(global-set-key (kbd "<M-return>") 'insert-line-before)
-(global-set-key (kbd "<M-S-up>") 'move-line-up)
-(global-set-key (kbd "<M-S-down>") 'move-line-down)
-
-;;(global-set-key (kbd "C-x <up>") 'windmove-up)
-;;(global-set-key (kbd "C-x <down>") 'windmove-down)
-;;(global-set-key (kbd "C-x <left>") 'windmove-left)
-;;(global-set-key (kbd "C-x <right>") 'windmove-right)
-
-;;(global-set-key (kbd "<f7>") 'ska-jump-to-register)
-;;(global-set-key (kbd "<f8>") 'ska-point-to-register)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
