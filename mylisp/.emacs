@@ -2,7 +2,7 @@
 ;;set the default environment
 ;;========================================
 ;;put .emacs file in user profile path with content
-;;(load-file "e:/edit/emacs/.emacs")
+;;(load-file "d:/edit/emacs/.emacs")
 
 ;;some conflict key for system:
 ;;kde: system setting -> shortcuts -> global keyboard shortcuts -> kwin -> activate window demanding attention (Ctrl+Alt+a)
@@ -22,28 +22,28 @@
                          ("elpy" . "http://jorgenschaefer.github.io/packages/")))
 
 (when (string-equal system-type "windows-nt")
-  (setenv "HOME" "e:/edit/emacs")
+  (setenv "HOME" "d:/edit/emacs")
   (setq exec-path
-        '("e:/edit/emacs/bin"
-          "e:/design/cygwin/usr/local/bin"
-          "e:/design/cygwin/usr/bin/bin"
-          "e:/design/cygwin/bin"
+        '("d:/edit/emacs/bin"
+          ;;"e:/design/cygwin/usr/local/bin"
+          ;;"e:/design/cygwin/usr/bin/bin"
+          ;;"e:/design/cygwin/bin"
           "C:/Windows/system32"
           "C:/Windows"
           ))
   (setenv "PATH"
           (concat
-           "e:/design/cygwin/usr/local/bin" ";"
-           "e:/design/cygwin/usr/bin" ";"
-           "e:/design/cygwin/bin" ";"
+           ;;"e:/design/cygwin/usr/local/bin" ";"
+           ;;"e:/design/cygwin/usr/bin" ";"
+           ;;"e:/design/cygwin/bin" ";"
            (getenv "PATH")
            )))
 
 ;;enable server mode
 (require 'server)
 ;;suppress error "directory ~/.emacs.d/server is unsafe" on windows
-(when (and (= emacs-major-version 24)
-           (= emacs-minor-version 2)
+(when (and ;;(= emacs-major-version 24)
+           ;;(= emacs-minor-version 2)
            (equal window-system 'w32))
   (defun server-ensure-safe-dir (dir) "Noop" t))
 (server-start)
@@ -63,17 +63,18 @@
 ;;config editor
 ;;========================================
 ;;config english font
-(set-face-attribute 'default nil :font "Bitstream Vera Sans Mono 11")
-;;(set-face-attribute 'default nil :font "Consolas 11")
+(if (string-equal system-type "windows-nt")
+    (set-face-attribute 'default nil :font "Consolas 11")
+  (set-face-attribute 'default nil :font "Bitstream Vera Sans Mono 11"))
 
 ;;config other font
 (dolist (charset '(kana han symbol cjk-misc bopomofo))
   (set-fontset-font
    (frame-parameter nil 'font)
    charset
-   ;; (font-spec :family "宋体" :size 12)
-   ;; (font-spec :family "Microsoft Yahei" :size 12)
-   (font-spec :family "Noto Sans Mono CJK SC" :size 12)
+   (if (string-equal system-type "windows-nt")
+       (font-spec :family "宋体" :size 12)
+     (font-spec :family "Noto Sans Mono CJK SC" :size 12))
    ))
 
 ;;config file name coding system
@@ -126,7 +127,7 @@
 ;;set emacs frame size
 (setq default-frame-alist
       '((top . 20)
-        (left . 1540)
+        (left . 600)
         (height . 55)
         (width . 120)
         (menu-bar-lines . 20)
@@ -258,7 +259,9 @@
 (global-set-key (kbd "<S-left>") 'tabbar-backward-tab)
 (global-set-key (kbd "<S-right>") 'tabbar-forward-tab)
 (global-set-key (kbd "<C-tab>") 'tabbar-forward-tab)
-(global-set-key (kbd "<S-iso-lefttab>") 'tabbar-forward-group)
+(if (string-equal system-type "windows-nt")
+    (global-set-key (kbd "<S-tab>") 'tabbar-forward-group)
+  (global-set-key (kbd "<S-iso-lefttab>") 'tabbar-forward-group))
 
 ;;(global-set-key (kbd "s-o") 'other-window)
 ;;(global-set-key (kbd "s-;") 'delete-other-windows)
