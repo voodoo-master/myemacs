@@ -68,14 +68,14 @@
   (set-face-attribute 'default nil :font "Bitstream Vera Sans Mono 11"))
 
 ;;config other font
-(dolist (charset '(kana han symbol cjk-misc bopomofo))
-  (set-fontset-font
-   (frame-parameter nil 'font)
-   charset
-   (if (string-equal system-type "windows-nt")
-       (font-spec :family "宋体" :size 12)
-     (font-spec :family "Noto Sans Mono CJK SC" :size 12))
-   ))
+;;(dolist (charset '(kana han symbol cjk-misc bopomofo))
+;;  (set-fontset-font
+;;   (frame-parameter nil 'font)
+;;   charset
+;;   (if (string-equal system-type "windows-nt")
+;;       (font-spec :family "宋体" :size 12)
+;;     (font-spec :family "Noto Sans Mono CJK SC" :size 12))
+;;   ))
 
 ;;config file name coding system
 (setq file-name-coding-system 'utf-8)
@@ -118,20 +118,20 @@
 (setq-default cursor-in-non-selected-windows 'hollow)
 
 ;;config color
-(set-background-color "#CBE9CB")
-(set-face-background 'region "#AEDBB4")
+;;(set-background-color "#CBE9CB")
+;;(set-face-background 'region "#AEDBB4")
 
 ;;config fill-column
 (setq default-fill-column 80)
 
 ;;set emacs frame size
 (setq default-frame-alist
-      '((top . 20)
-        (left . 600)
+      '(;;(top . 20)
+        ;;(left . 600)
         (height . 55)
         (width . 120)
-        (menu-bar-lines . 20)
-        (toll-bar-lines . 20)
+        ;;(menu-bar-lines . 20)
+        ;;(toll-bar-lines . 20)
         ))
 
 ;;config status-bar
