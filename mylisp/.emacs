@@ -221,26 +221,29 @@
 (global-set-key (kbd "C-x C-z") 'pop-global-mark)
 (global-set-key (kbd "C-x r C-z") 'point-to-register)
 (global-set-key (kbd "C-x r z") 'point-to-register)
-(global-set-key (kbd "C-S-p") 'match-paren)
+(global-set-key (kbd "C-%") 'match-paren)
 
 ;;hotkey for custom functions
 (global-set-key [(f5)] 'refresh-file)
 (global-set-key (kbd "M-;") 'smart-comment-dwim-line)
+(global-set-key (kbd "C-S-k") 'kill-to-beginning-of-line)
+(global-set-key (kbd "C-w") 'kill-region-or-line)
+(global-set-key (kbd "M-w") 'copy-region-or-line)
 ;;(define-key global-map (kbd "M-g t") 'go-to-char)
-;;(global-set-key (kbd "C-c y a") 'copy-to-beginning-of-line)
-;;(global-set-key (kbd "C-c y e") 'copy-to-end-of-line)
+(global-set-key (kbd "C-S-w") 'copy-to-beginning-of-line)
+(global-set-key (kbd "C-M-w") 'copy-to-end-of-line)
 ;;(global-set-key (kbd "C-c y w") 'lh-copy-word)
 ;;(global-set-key (kbd "C-c y s") 'lh-copy-string)
 ;;(global-set-key (kbd "C-c y p") 'lh-copy-parenthesis)
-;;(global-set-key (kbd "C-c p") 'yank-after-line)
-;;(global-set-key (kbd "C-c P") 'yank-before-line)
+(global-set-key (kbd "C-M-y") 'yank-after-line)
+(global-set-key (kbd "C-S-y") 'yank-before-line)
 ;;(global-set-key (kbd "C-c d w") 'lh-kill-word)
 ;;(global-set-key (kbd "C-c d s") 'lh-kill-string)
 ;;(global-set-key (kbd "C-c d p") 'lh-kill-parenthesis)
 (global-set-key (kbd "<C-return>") 'insert-line-after)
-(global-set-key (kbd "<M-return>") 'insert-line-before)
-(global-set-key (kbd "<M-S-up>") 'move-line-up)
-(global-set-key (kbd "<M-S-down>") 'move-line-down)
+(global-set-key (kbd "<S-return>") 'insert-line-before)
+(global-set-key (kbd "<M-up>") 'move-line-up)
+(global-set-key (kbd "<M-down>") 'move-line-down)
 
 ;;(global-set-key (kbd "C-x <up>") 'windmove-up)
 ;;(global-set-key (kbd "C-x <down>") 'windmove-down)
@@ -407,6 +410,21 @@
 ;;set always complete immediately
 (setq company-idle-delay 0)
 
+;;config rtags
+(require 'rtags)
+(add-hook 'c-mode-hook 'rtags-start-process-unless-running)
+(add-hook 'c++-mode-hook 'rtags-start-process-unless-running)
+(add-hook 'objc-mode-hook 'rtags-start-process-unless-running)
+(define-key global-map (kbd "C-c r s") (function rtags-find-symbol-at-point))
+(define-key global-map (kbd "C-c r r") (function rtags-find-references-at-point))
+(define-key global-map (kbd "C-c r f") (function rtags-find-file))
+(define-key global-map (kbd "C-c r v") (function rtags-find-virtuals-at-point))
+(define-key global-map (kbd "C-c r i") (function rtags-imenu))
+(define-key global-map (kbd "C-c r ,") (function rtags-location-stack-back))
+(define-key global-map (kbd "C-c r .") (function rtags-location-stack-forward))
+(define-key global-map (kbd "C-c r n") (function rtags-next-match))
+(define-key global-map (kbd "C-c r p") (function rtags-previous-match))
+
 ;;========================================
 ;;user define functions
 ;;========================================
@@ -421,6 +439,28 @@ at the end of the line."
   (if (and (not (region-active-p)) (not (looking-at "[ \t]*$")))
       (comment-or-uncomment-region (line-beginning-position) (line-end-position))
     (comment-dwim arg)))
+
+(defun kill-region-or-line ()
+  "kill region or whole line"
+  (interactive)
+  (if mark-active
+      (kill-region (region-beginning)
+   (region-end))
+    (progn
+     (kill-region (line-beginning-position)
+  (line-end-position))
+     (message "killed line"))))
+
+(defun copy-region-or-line ()
+  "copy region or whole line"
+  (interactive)
+  (if mark-active
+      (kill-ring-save (region-beginning)
+      (region-end))
+    (progn
+     (kill-ring-save (line-beginning-position)
+     (line-end-position))
+     (message "copied line"))))
 
 (defadvice kill-line (before check-position activate)
   (if (member major-mode
