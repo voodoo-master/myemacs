@@ -120,6 +120,9 @@
 ;;config color
 ;;(set-background-color "#CBE9CB")
 ;;(set-face-background 'region "#AEDBB4")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/mylisp/color-theme-solarized")
+(set-frame-parameter nil 'background-mode 'light)
+(load-theme 'solarized t)
 
 ;;config fill-column
 (setq default-fill-column 80)
