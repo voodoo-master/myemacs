@@ -18,8 +18,9 @@
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")
                          ("melpa" . "http://melpa.milkbox.net/packages/")
-                         ("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
-                         ("elpy" . "http://jorgenschaefer.github.io/packages/")))
+                         ;;("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
+                         ;;("elpy" . "http://jorgenschaefer.github.io/packages/")
+			 ))
 
 (when (string-equal system-type "windows-nt")
   (setenv "HOME" "d:/edit/emacs")
@@ -225,11 +226,13 @@
 (global-set-key (kbd "C-x r C-z") 'point-to-register)
 (global-set-key (kbd "C-x r z") 'point-to-register)
 (global-set-key (kbd "C-%") 'match-paren)
+(global-set-key (kbd "<S-delete>") 'kill-whole-line)
+(global-set-key (kbd "<M-delete>") 'kill-line)
+(global-set-key (kbd "<M-backspace>") 'kill-to-beginning-of-line)
 
 ;;hotkey for custom functions
 (global-set-key [(f5)] 'refresh-file)
 (global-set-key (kbd "M-;") 'smart-comment-dwim-line)
-(global-set-key (kbd "C-S-k") 'kill-to-beginning-of-line)
 (global-set-key (kbd "C-w") 'kill-region-or-line)
 (global-set-key (kbd "M-w") 'copy-region-or-line)
 ;;(define-key global-map (kbd "M-g t") 'go-to-char)
