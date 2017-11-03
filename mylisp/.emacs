@@ -228,7 +228,7 @@
 (global-set-key (kbd "C-%") 'match-paren)
 (global-set-key (kbd "<S-delete>") 'kill-whole-line)
 (global-set-key (kbd "<M-delete>") 'kill-line)
-(global-set-key (kbd "<M-backspace>") 'kill-to-beginning-of-line)
+(global-set-key (kbd "<S-backspace>") 'kill-to-beginning-of-line)
 
 ;;hotkey for custom functions
 (global-set-key [(f5)] 'refresh-file)
@@ -248,8 +248,8 @@
 ;;(global-set-key (kbd "C-c d p") 'lh-kill-parenthesis)
 (global-set-key (kbd "<C-return>") 'insert-line-after)
 (global-set-key (kbd "<S-return>") 'insert-line-before)
-(global-set-key (kbd "<M-up>") 'move-line-up)
-(global-set-key (kbd "<M-down>") 'move-line-down)
+(global-set-key (kbd "<M-S-up>") 'move-line-up)
+(global-set-key (kbd "<M-S-down>") 'move-line-down)
 
 ;;(global-set-key (kbd "C-x <up>") 'windmove-up)
 ;;(global-set-key (kbd "C-x <down>") 'windmove-down)
