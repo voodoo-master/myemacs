@@ -114,7 +114,7 @@
 
 ;;config cursor
 (mouse-avoidance-mode 'animate)
-;;(blink-cursor-mode nil)
+(blink-cursor-mode 0)
 (setq-default cursor-type '(bar . 3))
 (setq-default cursor-in-non-selected-windows 'hollow)
 
@@ -184,6 +184,7 @@
 (setq-default indent-tabs-mode nil)
 (setq default-tab-width 4)
 (setq c-basic-offset 4)
+(setq c-default-style "linux")
 
 ;;show matching bracket, don't jump to another
 (show-paren-mode t)
