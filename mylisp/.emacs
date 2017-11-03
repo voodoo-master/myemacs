@@ -115,7 +115,7 @@
 ;;config cursor
 (mouse-avoidance-mode 'animate)
 (blink-cursor-mode 0)
-(setq-default cursor-type '(bar . 3))
+;;(setq-default cursor-type '(bar . 3))
 (setq-default cursor-in-non-selected-windows 'hollow)
 
 ;;config color
@@ -782,7 +782,7 @@ when used in shell-mode, it will paste parenthesis on shell prompt by default"
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (avy company-ycmd company))))
+ '(package-selected-packages (quote (expand-region avy company-ycmd company))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
