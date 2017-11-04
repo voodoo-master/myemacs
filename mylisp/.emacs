@@ -407,9 +407,9 @@
 (add-hook 'after-init-hook #'global-company-mode)  
 
 ;;enable flycheck
-(require 'flycheck-ycmd)
-(flycheck-ycmd-setup)
-(add-hook 'after-init-hook #'global-flycheck-mode)  
+;;(require 'flycheck-ycmd)
+;;(flycheck-ycmd-setup)
+;;(add-hook 'after-init-hook #'global-flycheck-mode)  
 
 ;;set always complete immediately
 (setq company-idle-delay 0)
