@@ -20,7 +20,7 @@
                          ("melpa" . "http://melpa.milkbox.net/packages/")
                          ;;("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
                          ;;("elpy" . "http://jorgenschaefer.github.io/packages/")
-			 ))
+                         ))
 
 (when (string-equal system-type "windows-nt")
   (setenv "HOME" "d:/edit/emacs")
@@ -53,7 +53,7 @@
 ;;use this command to run emacs in windows:
 ;;"$HOME\bin\emacsclientw.exe" -n -f "$HOME\.emacs.d\server\server" -a "$HOME\bin\runemacs.exe" "%1"
 
-(setq auto-mode-alist 
+(setq auto-mode-alist
       (append '(
                 ("\\.launch" . nxml-mode)
                 ;;("\\.yaml" . nxml-mode)
@@ -214,6 +214,12 @@
 
 ;;enable visual bookmark
 ;;(enable-visual-studio-bookmarks)
+
+;;delete space at line end
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(add-hook 'before-save-hook 'whitespace-cleanup)
+;;(add-hook 'before-save-hook 'delete-blank-lines)
+(global-set-key [f6] 'whitespace-newline-mode)
 
 ;;========================================
 ;;hotkey define
@@ -404,12 +410,12 @@
 ;;completion framework
 (require 'company-ycmd)
 (company-ycmd-setup)
-(add-hook 'after-init-hook #'global-company-mode)  
+(add-hook 'after-init-hook #'global-company-mode)
 
 ;;enable flycheck
 ;;(require 'flycheck-ycmd)
 ;;(flycheck-ycmd-setup)
-;;(add-hook 'after-init-hook #'global-flycheck-mode)  
+;;(add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;;set always complete immediately
 (setq company-idle-delay 0)
@@ -641,7 +647,7 @@ occurence of CHAR."
   (interactive "p\ncgo to char: ")
   (search-forward (string char) nil nil n)
   (while (char-equal (read-char) char)
-	(search-forward (string char) nil nil n))
+    (search-forward (string char) nil nil n))
   (setq unread-command-events (list last-input-event)))
 
 ;;copy, kill, paste without selection
@@ -663,7 +669,7 @@ occurence of CHAR."
       (kill-region beg end))))
 (defun paste-to-mark(&optional arg)
  "Paste things to mark, or to the prompt in shell-mode"
- (let ((pasteMe 
+ (let ((pasteMe
         (lambda()
           (if (string= "shell-mode" major-mode)
               (progn (comint-next-prompt 25535) (yank))
@@ -679,7 +685,7 @@ occurence of CHAR."
 (defun end-of-string (&optional arg)
   (re-search-forward "[ \t]" (line-end-position) 3 arg)
   (if (looking-back "[\t ]") (goto-char (- (point) 1))))
-(setq dove-parenthesis-list 
+(setq dove-parenthesis-list
       '(("[" "]")
         ("(" ")")
         ("<" ">")
@@ -687,7 +693,7 @@ occurence of CHAR."
         ("\"" "\"")
         ("'"  "'")))
 (defun beginning-of-parenthesis(&optional arg)
-  "Go to the beginning of parenthesis 
+  "Go to the beginning of parenthesis
 and set the dove-parenthesis-begin found there"
   (re-search-backward "[[<(?\'\"]" (line-beginning-position) 3 1)
   (if (looking-at "[[<(?\'\"]")
