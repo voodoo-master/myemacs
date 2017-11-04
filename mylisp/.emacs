@@ -79,12 +79,11 @@
 ;;   ))
 
 ;;config file name coding system
-(setq file-name-coding-system 'utf-8)
-;;(setq file-name-coding-system 'gb18030)
-
-;;config file content coding system
 (prefer-coding-system 'utf-8)
-;;(prefer-coding-system 'gb18030)
+(setq file-name-coding-system 'utf-8)
+(setq save-buffer-coding-system 'utf-8)
+(setq coding-system-for-write 'utf-8)
+(setq file-name-coding-system 'utf-8)
 
 ;;config file eol format
 (set-buffer-file-coding-system 'unix 't)
@@ -96,9 +95,7 @@
 (tool-bar-mode 0)
 
 ;;config scroll-bar
-;;(scroll-bar-mode nil)
 (set-scroll-bar-mode 'left)
-;;(set-scroll-bar-mode 'right)
 
 ;;disable start-up message
 (setq inhibit-startup-message t)
@@ -431,6 +428,15 @@
 (define-key global-map (kbd "C-c r .") (function rtags-location-stack-forward))
 (define-key global-map (kbd "C-c r n") (function rtags-next-match))
 (define-key global-map (kbd "C-c r p") (function rtags-previous-match))
+
+;;expand-region config
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
+
+;;smartparens config
+(require 'smartparens)
+(add-hook 'prog-mode-hook 'turn-on-smartparens-strict-mode)
+(add-hook 'markdown-mode-hook 'turn-on-smartparens-strict-mode)
 
 ;;========================================
 ;;user define functions
@@ -782,7 +788,9 @@ when used in shell-mode, it will paste parenthesis on shell prompt by default"
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (expand-region avy company-ycmd company))))
+ '(package-selected-packages
+   (quote
+    (smartparens expand-region avy company-ycmd company))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
