@@ -603,6 +603,14 @@ at the end of the line."
   (kill-buffer (current-buffer)))
 (add-hook 'shell-mode-hook 'shell-mode-hook-func)
 
+(defun dos-to-unix () (interactive)
+   (goto-char (point-min))
+   (while (search-forward "\r" nil t) (replace-match "")))
+
+(defun unix-to-dos () (interactive)
+   (goto-char (point-min))
+   (while (search-forward "\n" nil t) (replace-match "\r\n")))
+
 ;;highlight buffer list
 (setq buffer-menu-buffer-font-lock-keywords
       '(("^....[*]Man .*Man.*"   . font-lock-variable-name-face) ; Man page
