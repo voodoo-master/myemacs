@@ -112,7 +112,7 @@
 ;;config cursor
 (mouse-avoidance-mode 'animate)
 (blink-cursor-mode 0)
-;;(setq-default cursor-type '(bar . 3))
+(setq-default cursor-type '(bar . 3))
 (setq-default cursor-in-non-selected-windows 'hollow)
 
 ;;config color
@@ -374,7 +374,7 @@
   "when file opened is of a certain mode, make it read only"
   (when (memq major-mode '(c-mode c++-mode java-mode tcl-mode text-mode python-mode))
     (toggle-read-only 1)))
-(add-hook 'find-file-hooks 'make-some-files-read-only)
+;;(add-hook 'find-file-hooks 'make-some-files-read-only)
 
 ;;config highlight parentheses
 (require 'highlight-parentheses)
