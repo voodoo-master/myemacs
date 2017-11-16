@@ -69,14 +69,14 @@
   (set-face-attribute 'default nil :font "Bitstream Vera Sans Mono 11"))
 
 ;;config other font
-;;(dolist (charset '(kana han symbol cjk-misc bopomofo))
-;;  (set-fontset-font
-;;   (frame-parameter nil 'font)
-;;   charset
-;;   (if (string-equal system-type "windows-nt")
-;;       (font-spec :family "宋体" :size 12)
-;;     (font-spec :family "Noto Sans Mono CJK SC" :size 12))
-;;   ))
+(dolist (charset '(kana han symbol cjk-misc bopomofo))
+ (set-fontset-font
+  (frame-parameter nil 'font)
+  charset
+  (if (string-equal system-type "windows-nt")
+      (font-spec :family "宋体" :size 12)
+    (font-spec :family "Noto Sans Mono CJK SC" :size 12))
+  ))
 
 ;;config file name coding system
 (prefer-coding-system 'utf-8)
@@ -425,6 +425,7 @@
 (add-hook 'c-mode-hook 'rtags-start-process-unless-running)
 (add-hook 'c++-mode-hook 'rtags-start-process-unless-running)
 (add-hook 'objc-mode-hook 'rtags-start-process-unless-running)
+(setq rtags-display-result-backend 'helm)
 (define-key global-map (kbd "C-c r s") (function rtags-find-symbol-at-point))
 (define-key global-map (kbd "C-c r r") (function rtags-find-references-at-point))
 (define-key global-map (kbd "C-c r f") (function rtags-find-file))
@@ -443,6 +444,18 @@
 (require 'smartparens)
 (add-hook 'prog-mode-hook 'turn-on-smartparens-strict-mode)
 (add-hook 'markdown-mode-hook 'turn-on-smartparens-strict-mode)
+
+;;helm config
+(require 'helm-config)
+(helm-mode 1)
+(define-key global-map [remap find-file] 'helm-find-files)
+(define-key global-map [remap occur] 'helm-occur)
+(define-key global-map [remap list-buffers] 'helm-buffers-list)
+(define-key global-map [remap dabbrev-expand] 'helm-dabbrev)
+(define-key global-map [remap execute-extended-command] 'helm-M-x)
+(unless (boundp 'completion-in-region-function)
+  (define-key lisp-interaction-mode-map [remap completion-at-point] 'helm-lisp-completion-at-point)
+  (define-key emacs-lisp-mode-map       [remap completion-at-point] 'helm-lisp-completion-at-point))
 
 ;;========================================
 ;;user define functions
@@ -804,7 +817,7 @@ when used in shell-mode, it will paste parenthesis on shell prompt by default"
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (smartparens expand-region avy company-ycmd company))))
+    (helm smartparens expand-region avy company-ycmd company))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
