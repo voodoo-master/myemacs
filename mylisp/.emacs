@@ -321,9 +321,9 @@
                     (message "term-send-left"))))))
 
 ;;config eww use proxy
-(setq url-proxy-services '(("no_proxy" . "^\\(localhost\\|10.*\\|192.*\\)\\|.*\.zte\.com\.cn")
-                           ("http" . "10.204.220.5:80")
-                           ("https" . "10.204.220.5:80")))
+;;(setq url-proxy-services '(("no_proxy" . "^\\(localhost\\|10.*\\|192.*\\)\\|.*\.zte\.com\.cn")
+;;                           ("http" . "10.204.220.5:80")
+;;                           ("https" . "10.204.220.5:80")))
 
 ;;config ggtags
 (require 'ggtags)
