@@ -328,11 +328,11 @@
 ;;                           ("https" . "10.204.220.5:80")))
 
 ;;config ggtags
-(require 'ggtags)
-(add-hook 'c-mode-common-hook
-          (lambda ()
-            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
-              (ggtags-mode 1))))
+;;(require 'ggtags)
+;;(add-hook 'c-mode-common-hook
+;;          (lambda ()
+;;            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+;;              (ggtags-mode 1))))
 
 ;;config tabbar
 (require 'tabbar)
@@ -398,45 +398,29 @@
 
 ;;config for ycmd
 ;;To use ycmd-mode in all supported modes
-(require 'ycmd)
-(add-hook 'after-init-hook #'global-ycmd-mode)
+;;(require 'ycmd)
+;;(add-hook 'after-init-hook 'global-ycmd-mode)
 ;;(add-hook 'c++-mode-hook 'company-mode)
 ;;(add-hook 'c++-mode-hook 'ycmd-mode)
 
 ;;specify how to run the server
-(set-variable 'ycmd-server-command '("/usr/bin/python" "/opt/ycmd/ycmd"))
+;;(set-variable 'ycmd-server-command '("/usr/bin/python" "/opt/ycmd/ycmd"))
 
 ;;specify a global emacs configuration
-(set-variable 'ycmd-global-config "/opt/ycmd/examples/.ycm_extra_conf.py")
+;;(specifyset-variable 'ycmd-global-config "/opt/ycmd/examples/.ycm_extra_conf.py")
 
 ;;completion framework
-(require 'company-ycmd)
-(company-ycmd-setup)
-(add-hook 'after-init-hook #'global-company-mode)
+;;(require 'company-ycmd)
+;;(company-ycmd-setup)
+(add-hook 'after-init-hook 'global-company-mode)
 
 ;;enable flycheck
 ;;(require 'flycheck-ycmd)
 ;;(flycheck-ycmd-setup)
-;;(add-hook 'after-init-hook #'global-flycheck-mode)
+;;(add-hook 'after-init-hook 'global-flycheck-mode)
 
 ;;set always complete immediately
 (setq company-idle-delay 0)
-
-;;config rtags
-;;(require 'rtags)
-;;(add-hook 'c-mode-hook 'rtags-start-process-unless-running)
-;;(add-hook 'c++-mode-hook 'rtags-start-process-unless-running)
-;;(add-hook 'objc-mode-hook 'rtags-start-process-unless-running)
-;;(setq rtags-display-result-backend 'helm)
-;;(define-key global-map (kbd "C-c r s") (function rtags-find-symbol-at-point))
-;;(define-key global-map (kbd "C-c r r") (function rtags-find-references-at-point))
-;;(define-key global-map (kbd "C-c r f") (function rtags-find-file))
-;;(define-key global-map (kbd "C-c r v") (function rtags-find-virtuals-at-point))
-;;(define-key global-map (kbd "C-c r i") (function rtags-imenu))
-;;(define-key global-map (kbd "C-c r ,") (function rtags-location-stack-back))
-;;(define-key global-map (kbd "C-c r .") (function rtags-location-stack-forward))
-;;(define-key global-map (kbd "C-c r n") (function rtags-next-match))
-;;(define-key global-map (kbd "C-c r p") (function rtags-previous-match))
 
 ;;expand-region config
 (require 'expand-region)
@@ -448,16 +432,16 @@
 ;;(add-hook 'markdown-mode-hook 'turn-on-smartparens-strict-mode)
 
 ;;helm config
-(require 'helm-config)
-(helm-mode 1)
-(define-key global-map [remap find-file] 'helm-find-files)
-(define-key global-map [remap occur] 'helm-occur)
-(define-key global-map [remap list-buffers] 'helm-buffers-list)
-(define-key global-map [remap dabbrev-expand] 'helm-dabbrev)
-(define-key global-map [remap execute-extended-command] 'helm-M-x)
-(unless (boundp 'completion-in-region-function)
-  (define-key lisp-interaction-mode-map [remap completion-at-point] 'helm-lisp-completion-at-point)
-  (define-key emacs-lisp-mode-map       [remap completion-at-point] 'helm-lisp-completion-at-point))
+;;(require 'helm-config)
+;;(helm-mode 1)
+;;(define-key global-map [remap find-file] 'helm-find-files)
+;;(define-key global-map [remap occur] 'helm-occur)
+;;(define-key global-map [remap list-buffers] 'helm-buffers-list)
+;;(define-key global-map [remap dabbrev-expand] 'helm-dabbrev)
+;;(define-key global-map [remap execute-extended-command] 'helm-M-x)
+;;(unless (boundp 'completion-in-region-function)
+;; (define-key lisp-interaction-mode-map [remap completion-at-point] 'helm-lisp-completion-at-point)
+;; (define-key emacs-lisp-mode-map       [remap completion-at-point] 'helm-lisp-completion-at-point))
 
 ;;========================================
 ;;user define functions
@@ -817,9 +801,7 @@ when used in shell-mode, it will paste parenthesis on shell prompt by default"
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (helm smartparens expand-region avy company-ycmd company))))
+ '(package-selected-packages (quote (smartparens expand-region company avy))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
