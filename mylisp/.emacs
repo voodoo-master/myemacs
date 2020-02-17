@@ -1,8 +1,6 @@
 ;;========================================
 ;;set the default environment
 ;;========================================
-;;put .emacs file in user profile path with content
-;;(load-file "d:/edit/emacs/.emacs")
 
 ;;some conflict key for system:
 ;;kde: system setting -> shortcuts -> global keyboard shortcuts -> kwin -> activate window demanding attention (Ctrl+Alt+a)
@@ -26,17 +24,13 @@
   (setenv "HOME" "d:/edit/emacs")
   (setq exec-path
         '("d:/edit/emacs/bin"
-          ;;"e:/design/cygwin/usr/local/bin"
-          ;;"e:/design/cygwin/usr/bin/bin"
-          ;;"e:/design/cygwin/bin"
+          "d:/develop/msys2/usr/local/bin"
           "C:/Windows/system32"
           "C:/Windows"
           ))
   (setenv "PATH"
           (concat
-           ;;"e:/design/cygwin/usr/local/bin" ";"
-           ;;"e:/design/cygwin/usr/bin" ";"
-           ;;"e:/design/cygwin/bin" ";"
+           "d:/develop/msys2/usr/local/bin" ";"
            (getenv "PATH")
            )))
 
