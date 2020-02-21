@@ -14,10 +14,10 @@
 (setq default-directory "~/")
 (add-to-list 'load-path "~/.emacs.d/mylisp")
 (setq package-archives '(("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-                         ("marmalade" . "http://mirror.tuna.tsinghua.edu.cn/elpa/marmalade/")
                          ("melpa" . "http://mirror.tuna.tsinghua.edu.cn/elpa/melpa/")
-                         ;; ("melpa-stable" . "http://mirror.tuna.tsinghua.edu.cn/elpa/melpa-stable")
                          ("org" . "http://mirror.tuna.tsinghua.edu.cn/elpa/org/")
+                         ;; ("melpa-stable" . "http://mirror.tuna.tsinghua.edu.cn/elpa/melpa-stable")
+                         ;; ("marmalade" . "http://mirror.tuna.tsinghua.edu.cn/elpa/marmalade/")
                          ))
 
 (when (string-equal system-type "windows-nt")
