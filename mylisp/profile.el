@@ -437,6 +437,10 @@
 ;; (define-key lisp-interaction-mode-map [remap completion-at-point] 'helm-lisp-completion-at-point)
 ;; (define-key emacs-lisp-mode-map       [remap completion-at-point] 'helm-lisp-completion-at-point))
 
+(custom-set-variables
+ '(package-selected-packages (quote (smartparens expand-region company avy))))
+(custom-set-faces)
+
 ;;========================================
 ;;user define functions
 ;;========================================
@@ -789,16 +793,3 @@ when used in shell-mode, it will paste parenthesis on shell prompt by default"
 (defun refresh-file ()
   (interactive)
   (revert-buffer t (not (buffer-modified-p)) t))
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (smartparens expand-region company avy))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
