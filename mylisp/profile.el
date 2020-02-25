@@ -438,7 +438,7 @@
 ;; (define-key emacs-lisp-mode-map       [remap completion-at-point] 'helm-lisp-completion-at-point))
 
 (custom-set-variables
- '(package-selected-packages (quote (smartparens expand-region company avy))))
+ '(package-selected-packages (quote (smartparens expand-region company avy company-ycmd ycmd))))
 (custom-set-faces)
 
 ;;========================================
