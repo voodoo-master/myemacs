@@ -60,7 +60,7 @@
 ;;config english font
 (if (string-equal system-type "windows-nt")
     (set-face-attribute 'default nil :font "Consolas 11")
-  (set-face-attribute 'default nil :font "Bitstream Vera Sans Mono 11"))
+  (set-face-attribute 'default nil :font "DejaVu Sans Mono 11"))
 
 ;;config other font
 (dolist (charset '(kana han symbol cjk-misc bopomofo))
@@ -267,7 +267,6 @@
 (global-set-key (kbd "<C-next>") 'tabbar-forward-tab)
 (global-set-key (kbd "<C-S-p>") 'tabbar-backward-tab)
 (global-set-key (kbd "<C-S-n>") 'tabbar-forward-tab)
-(global-set-key (kbd "<C-tab>") 'tabbar-forward-tab)
 (if (string-equal system-type "windows-nt")
     (global-set-key (kbd "<S-tab>") 'tabbar-forward-group)
   (global-set-key (kbd "<S-iso-lefttab>") 'tabbar-forward-group))
