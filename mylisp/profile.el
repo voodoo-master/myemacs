@@ -24,13 +24,14 @@
   (setenv "HOME" "d:/edit/emacs")
   (setq exec-path
         '("d:/edit/emacs/bin"
-          "d:/develop/msys2/usr/local/bin"
+          "d:/develop/msys2/usr/bin"
+          "d:/develop/msys2/mingw64/bin"
           "C:/Windows/system32"
           "C:/Windows"
           ))
   (setenv "PATH"
           (concat
-           "d:/develop/msys2/usr/local/bin" ";"
+           "d:/develop/msys2/usr/bin" ";"
            (getenv "PATH")
            )))
 
@@ -219,14 +220,11 @@
 ;;hotkey define
 ;;========================================
 ;;hotkey for system functions
-(global-set-key (kbd "C-z") 'set-mark-command)
-(global-set-key (kbd "C-x C-z") 'pop-global-mark)
-(global-set-key (kbd "C-x r C-z") 'point-to-register)
-(global-set-key (kbd "C-x r z") 'point-to-register)
+(global-set-key (kbd "C-.") 'set-mark-command)
+(global-set-key (kbd "C-x C-.") 'pop-global-mark)
 (global-set-key (kbd "C-%") 'match-paren)
-(global-set-key (kbd "<S-delete>") 'kill-whole-line)
-(global-set-key (kbd "<M-delete>") 'kill-line)
-(global-set-key (kbd "<S-backspace>") 'kill-to-beginning-of-line)
+(global-set-key (kbd "<C-M-backspace>") 'kill-whole-line)
+(global-set-key (kbd "<C-backspace>") 'kill-to-beginning-of-line)
 
 ;;hotkey for custom functions
 (global-set-key [(f5)] 'refresh-file)
@@ -234,18 +232,18 @@
 (global-set-key (kbd "C-w") 'kill-region-or-line)
 (global-set-key (kbd "M-w") 'copy-region-or-line)
 ;;(define-key global-map (kbd "M-g t") 'go-to-char)
-(global-set-key (kbd "C-M-w") 'copy-to-end-of-line)
-(global-set-key (kbd "M-W") 'copy-to-beginning-of-line)
+(global-set-key (kbd "C-c w") 'copy-to-end-of-line)
+(global-set-key (kbd "C-c W") 'copy-to-beginning-of-line)
 ;;(global-set-key (kbd "C-c y w") 'lh-copy-word)
 ;;(global-set-key (kbd "C-c y s") 'lh-copy-string)
 ;;(global-set-key (kbd "C-c y p") 'lh-copy-parenthesis)
-(global-set-key (kbd "C-M-y") 'yank-after-line)
-(global-set-key (kbd "M-Y") 'yank-before-line)
+(global-set-key (kbd "C-c y") 'yank-after-line)
+(global-set-key (kbd "C-c Y") 'yank-before-line)
 ;;(global-set-key (kbd "C-c d w") 'lh-kill-word)
 ;;(global-set-key (kbd "C-c d s") 'lh-kill-string)
 ;;(global-set-key (kbd "C-c d p") 'lh-kill-parenthesis)
 (global-set-key (kbd "<C-return>") 'insert-line-after)
-(global-set-key (kbd "<S-return>") 'insert-line-before)
+(global-set-key (kbd "<M-return>") 'insert-line-before)
 (global-set-key (kbd "<M-S-up>") 'move-line-up)
 (global-set-key (kbd "<M-S-down>") 'move-line-down)
 
@@ -270,6 +268,7 @@
 (if (string-equal system-type "windows-nt")
     (global-set-key (kbd "<S-tab>") 'tabbar-forward-group)
   (global-set-key (kbd "<S-iso-lefttab>") 'tabbar-forward-group))
+(global-set-key (kbd "<C-tab>") 'tabbar-forward-tab)
 
 ;;(global-set-key (kbd "s-o") 'other-window)
 ;;(global-set-key (kbd "s-;") 'delete-other-windows)
