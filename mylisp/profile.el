@@ -220,9 +220,9 @@
 ;;hotkey define
 ;;========================================
 ;;hotkey for system functions
-(global-set-key (kbd "C-.") 'set-mark-command)
-(global-set-key (kbd "C-x C-.") 'pop-global-mark)
-(global-set-key (kbd "C-%") 'match-paren)
+(global-set-key (kbd "C-z") 'set-mark-command)
+(global-set-key (kbd "C-x C-z") 'pop-global-mark)
+(global-set-key (kbd "C-c m") 'match-paren)
 (global-set-key (kbd "<C-M-backspace>") 'kill-whole-line)
 (global-set-key (kbd "<C-backspace>") 'kill-to-beginning-of-line)
 
